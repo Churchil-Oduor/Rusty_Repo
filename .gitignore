@@ -1,0 +1,6 @@
+# ignore all the executable files, the .pdb files and also the files in 
+# target folder if the project was built with cargo.
+
+*.exe
+*.pdb
+/target
