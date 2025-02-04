@@ -6,16 +6,17 @@ fn main()
 
     while lower_limit <= upper_limit
     {
-
         print!("{}", lower_limit as char);
-
-        if lower_limit == upper_limit {
-            lower_limit = 96;
-            upper_limit = 122;
-        }
-        else if upper_limit == 122 {
-            break;
-        }
         lower_limit += 1;
     }
+
+    lower_limit = 97;
+    upper_limit = 102;
+
+    while lower_limit <= upper_limit
+    {
+        print!("{}", lower_limit as char);
+        lower_limit += 1;
+    }
+    print!("{}", '\n');
 }
