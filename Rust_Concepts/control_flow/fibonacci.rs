@@ -1,18 +1,22 @@
-fn fibonacci(x: u32)
+fn fibonacci(range: u32)
 {
-    let mut start: u32 = 1;
-    let mut prev: u32 = 0;
+    let mut present_fib: u32 = 1;
+    let mut _previous_fib: u32 = 0;
+    let mut count: u32 = 0;
 
-    for number in (1..x).rev()
-    {
-        println!("{start}");
-        prev = start;
-        start += prev;
+    while count <= (range / 2) {
 
+        print!("{present_fib}, ");
+        _previous_fib += present_fib;
+        present_fib += _previous_fib;
+        print!("{_previous_fib}, ");
+        count += 1;
     }
 }
 
 fn main()
 {
-    fibonacci(4);
+    let range: u32 = 4;
+
+    fibonacci(range);
 }
