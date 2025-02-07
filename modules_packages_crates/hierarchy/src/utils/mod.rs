@@ -1,2 +1,2 @@
-//pub mod math;
-pub use math::mult;
+pub mod math;
+//pub use math::mult;
