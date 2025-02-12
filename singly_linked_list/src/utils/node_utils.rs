@@ -33,4 +33,15 @@ impl List_S {
             node = n.next.as_ref(); //moves to the next node safely
         }
     }
+
+    pub fn list_len(head_node: &Option<Box<List_S>>) -> u32 {
+        let mut node = head_node.as_ref();
+        let mut count = 0;
+
+        while let Some(n) = node {
+            count += 1;
+            node = n.next.as_ref();
+        }
+        count
+    }
 }
