@@ -44,4 +44,6 @@ impl List_S {
         }
         count
     }
+
+    pub fn insert_node() {}
 }
