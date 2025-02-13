@@ -11,6 +11,7 @@ fn main() {
     let count = Node::count_nodes(&node);
     println!("{}", count);
     Node::add_node_end(&mut node, "Okech".to_string());
+    Node::add_node(&mut node, "Okech".to_string());
     Node::print_list(&mut node);
 
 

@@ -49,20 +49,23 @@ impl Node {
         count
     }
 
-    pub fn add_node_end(head: &Option<Box<Node>>, data: String) {
-        let mut last_node = head.as_ref();
-        let new_node = Box::new(Self::new(data));
+    pub fn add_node_end(head: &mut Option<Box<Node>>, data: String) {
+        
+        let new_node = Some(Box::new(Self::new(data)));
+        let mut node = head.as_mut();
 
-        while let Some(mut n) = last_node {
-
-            match n.next.as_ref() {
-                None => {
-                    n = &new_node;
-                    break;
-                },
-                Some(_) => {}
+        while let Some(n) = node {
+            if n.next.is_none() {
+                n.next = new_node;
+                return;
             }
-            last_node = n.next.as_ref();
+            node = n.next.as_mut();
         }
+        *head = new_node;
     }
 }
+
+
+
+
+
