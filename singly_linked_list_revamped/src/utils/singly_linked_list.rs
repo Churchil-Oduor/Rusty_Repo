@@ -32,9 +32,11 @@ impl Node {
 
         let mut tray = head.as_ref();
         while let Some(n) = tray {
-            println!("{}", n.data);
+            print!("[{}]--->", n.data);
             tray = n.next.as_ref();
         }
+        print!("Null");
+        println!("{}", '\n');
     }
 
     pub fn count_nodes(head: &Option<Box<Node>>) -> u32 {
