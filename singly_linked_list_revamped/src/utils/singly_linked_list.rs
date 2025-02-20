@@ -80,6 +80,11 @@ impl Node {
             help_pos = position + num_nodes as i32;
         }
 
+        if help_pos == 0 {
+            *head = head.take().and_then(|node| node.next);
+            return;
+        }
+
         while let Some(n) = current {
 
             if (count + 1) as i32 == help_pos {
