@@ -66,8 +66,31 @@ impl Node {
         *head = new_node;
     }
 
-//    pub fn remove_node_in(head: &mut Option<Box<Node>>, position: u32) {
-  //  }
+    pub fn remove_node_in(head: &mut Option<Box<Node>>, position: i32) {
+
+        let num_nodes: u32 = Self::count_nodes(head);
+        let mut current = head.as_mut();
+        let mut count: u32 = 0;
+        let mut help_pos = position;
+
+        if position >= num_nodes as i32 {
+            println!("Error! Out of Bounds Error");
+            return;
+        } else if position < 0 {
+            help_pos = position + num_nodes as i32;
+        }
+
+        while let Some(n) = current {
+
+            if (count + 1) as i32 == help_pos {
+                n.next = n.next.take().and_then(|next_node| next_node.next);
+                return;
+            }
+
+            count += 1;
+            current = n.next.as_mut();
+        }
+    }
 }
 
 
