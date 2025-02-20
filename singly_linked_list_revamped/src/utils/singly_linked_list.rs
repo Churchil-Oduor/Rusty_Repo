@@ -66,31 +66,8 @@ impl Node {
         *head = new_node;
     }
 
-    pub fn remove_node_in(head: &mut Option<Box<Node>>, position: u32) {
-
-        let num_nodes: u32 = Self::count_nodes(head);
-
-        if position > (num_nodes - 1) {
-            return;
-        }
-
-        if position == 0 && (num_nodes - 1) == 0 {
-            *head = None;
-            return;
-        }
-
-        let node = head.as_mut();
-        let mut count: u32 = 0;
-        
-        while let Some(n) = node {
-            if position == (count + 1) {
-                let next_node = n.next.next;
-                node.next = next_node;
-            }
-            
-        }
-        
-    }
+//    pub fn remove_node_in(head: &mut Option<Box<Node>>, position: u32) {
+  //  }
 }
 
 
