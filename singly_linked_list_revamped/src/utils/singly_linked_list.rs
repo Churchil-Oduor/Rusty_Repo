@@ -96,6 +96,39 @@ impl Node {
             current = n.next.as_mut();
         }
     }
+
+    pub fn insert_into_pos(head: &mut Option<Box<Node>>, mut node: Option<Box<Node>>, position: i32) {
+        let num_nodes: u32 = Self::count_nodes(head);
+        let mut current = head.as_mut();
+        let mut count: i32 = 0;
+        let mut help_pos: i32 = position;
+
+        if position >= num_nodes as i32 {
+            println!("Error, Position out of bounds!");
+            return;
+        } else if position == 0 {
+            node.as_mut().unwrap().next = head.take();
+            *head = node;
+            return;
+        } else if position < 0 {
+            help_pos += num_nodes as i32;
+        }
+
+        while let Some(n) = current {
+            if count + 1 == help_pos {
+                node.as_mut().unwrap().next = n.next.take();
+                n.next = node;
+                return;
+            }
+
+            count += 1;
+            current = n.next.as_mut();
+        }
+
+
+
+
+    }
 }
 
 
