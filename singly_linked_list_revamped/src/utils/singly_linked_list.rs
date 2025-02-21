@@ -97,37 +97,51 @@ impl Node {
         }
     }
 
-    pub fn insert_into_pos(head: &mut Option<Box<Node>>, mut node: Option<Box<Node>>, position: i32) {
+    pub fn insert_into_pos(head: &mut Option<Box<Node>>, mut node: Option<Box<Node>>, position: i32) -> Result<(), String> {
+
+        if node.is_none() {
+            return Err("Err: Node to insert is None".to_string());
+        }
+
         let num_nodes: u32 = Self::count_nodes(head);
         let mut current = head.as_mut();
         let mut count: i32 = 0;
         let mut help_pos: i32 = position;
 
-        if position >= num_nodes as i32 {
-            println!("Error, Position out of bounds!");
-            return;
-        } else if position == 0 {
-            node.as_mut().unwrap().next = head.take();
+        if help_pos >= num_nodes as i32 {
+            return Err("Error, Position out of bounds!".to_string());
+            
+        } else if help_pos == 0 {
+
+            if let Some(n) = &mut node {
+                n.next = head.take();
+            }
+
             *head = node;
-            return;
-        } else if position < 0 {
+            return Ok(());
+
+        } else if help_pos < 0 {
             help_pos += num_nodes as i32;
+            if help_pos < 0 {
+                return Err("Error: Negative Position out of bounds".to_string());
+            }
         }
 
         while let Some(n) = current {
             if count + 1 == help_pos {
-                node.as_mut().unwrap().next = n.next.take();
+
+                if let Some(new_node) = &mut node {
+                    new_node.next = n.next.take();
+                }
                 n.next = node;
-                return;
+                return Ok(());
             }
+
 
             count += 1;
             current = n.next.as_mut();
         }
-
-
-
-
+        return Err("Failed to insert node".to_string());
     }
 }
 
