@@ -143,6 +143,10 @@ impl Node {
         }
         return Err("Failed to insert node".to_string());
     }
+
+    pub fn delete_list(head: &mut Option<Box<Node>>){
+        *head = None;
+    }
 }
 
 
